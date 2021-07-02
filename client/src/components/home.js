@@ -110,6 +110,7 @@ export default function Home(props) {
       })
       .then(function (data) {
         // This is the JSON from response
+        console.log(data)
         setPhotos({ ...photos, data: data, status: "success" });
       })
       .catch(function (err) {
@@ -205,7 +206,7 @@ export default function Home(props) {
         ) : (
           <Grid container spacing={2}>
             {photos.data.map((photo) => (
-              <PhotoItem title={photo.title} url={photo.url} key={photo.id} />
+              <PhotoItem title={photo.title} url={photo.thumbnailUrl} key={photo.id} />
             ))}
           </Grid>
         )}

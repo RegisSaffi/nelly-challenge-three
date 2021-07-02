@@ -36,7 +36,16 @@ function getPhotos(req) {
       .then((res) => res.json())
       .then(
         (result) => {
-          resolve(result);
+
+          var list=[]
+          result.forEach((element)=>{
+            list.push({
+              title:element.title,
+              thumbnailUrl:element.thumbnailUrl,
+              id:element.id
+            })
+          })
+          resolve(list);
         },
         (error) => {
           reject(error);
