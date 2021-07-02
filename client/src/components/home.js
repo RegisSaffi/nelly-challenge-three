@@ -103,7 +103,7 @@ export default function Home(props) {
 
     setPhotos({ ...photos, data: [], status: "loading" });
 
-    fetch("http://localhost/api/photos?id=" + q)
+    fetch("/api/photos?id=" + q)
       .then(function (response) {
         // The API call was successful!
         return response.json();
