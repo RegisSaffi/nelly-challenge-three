@@ -6,7 +6,7 @@ var path = require("path");
 const fetch = require("node-fetch");
 
 const app = express();
-const apiPort = 80;
+const apiPort =process.env.PORT || 80;
 
 app.use(express.static(path.join(__dirname, "build")));
 
