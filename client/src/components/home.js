@@ -18,10 +18,12 @@ import {
 import {
   CloseRounded,
   PhotoAlbumRounded,
-  SearchRounded,BrightnessHighRounded,Brightness4Rounded
+  SearchRounded,
+  BrightnessHighRounded,
+  Brightness4Rounded,
 } from "@material-ui/icons";
 
-import { makeStyles,useTheme } from "@material-ui/styles";
+import { makeStyles, useTheme } from "@material-ui/styles";
 import { useSnackbar } from "notistack";
 
 import { ReactComponent as PhotosImg } from "./media/photos.svg";
@@ -55,14 +57,14 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     height: 200,
-    width:200
+    width: 200,
   },
 }));
 
 export default function Home(props) {
   const classes = useStyles();
-  const theme=useTheme()
-  const {changeTheme} = props
+  const theme = useTheme();
+  const { changeTheme } = props;
 
   const [photos, setPhotos] = useState({ data: [] });
 
@@ -108,12 +110,12 @@ export default function Home(props) {
       })
       .then(function (data) {
         // This is the JSON from response
-        setPhotos({...photos, data: data, status: "success" });
+        setPhotos({ ...photos, data: data, status: "success" });
       })
       .catch(function (err) {
         // There was an error loading photos
-        setPhotos({...photos, data: [], status: "error" });
-        notify('Error loading photos')
+        setPhotos({ ...photos, data: [], status: "error" });
+        notify("Error loading photos");
       });
   };
 
@@ -198,7 +200,7 @@ export default function Home(props) {
         ) : photos.data.length === 0 ? (
           <StatusIndicator
             title="No photos found for your album ID, try another ID."
-            MyImage={ErrorImg}
+            MyImage={EmptyImg}
           />
         ) : (
           <Grid container spacing={2}>
@@ -252,7 +254,9 @@ function StatusIndicator(props) {
         <MyImage className={classes.img} />
       )}
       <Box mt={2} />
-      <Typography color="textSecondary" align='center'>{title}</Typography>
+      <Typography color="textSecondary" align="center">
+        {title}
+      </Typography>
     </Box>
   );
 }
